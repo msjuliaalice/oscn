@@ -7,3 +7,20 @@ def text_values(ResultSet):
 def add_properties(obj, names, values):
     for idx, value in enumerate(values):
         setattr(obj, names[idx], value)
+
+class PrintTableRow:
+    def __utf8__(self):
+        output = ''
+        delim = ''
+        for property, value in vars(self).items():
+            output = '%s %s "%s": "%s"' % (output, delim, property, value)
+            delim = ','
+
+        return '{' + output + '}'
+    def __repr__(self):
+        output = ''
+        delim = ''
+        for property, value in vars(self).items():
+            output = '%s %s "%s": "%s"' % (output, delim, property, value)
+            delim = ','
+        return '{' + output + '}\r'
